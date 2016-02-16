@@ -50,7 +50,7 @@ class teamcity::agent::service {
     if $service_run_type == 'systemd' {
       exec { 'run-teamcity-manualy':
         user	=> "${agent_user}",
-      	command	=> "${agent_dir}/bin/agent.sh run",
+      	command	=> "${agent_dir}/bin/agent.sh start",
       	refreshonly => true,
       }
       service { 'build-agent':
