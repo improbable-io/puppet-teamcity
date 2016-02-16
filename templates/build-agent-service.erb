@@ -5,8 +5,11 @@ Description=TeamCity Build Agent
 After=network.target
 
 [Service]
+Type=simple
 User=<%= @agent_user %>
+PIDFile=<%= @agent_dir %>/logs/buildAgent.pid
 ExecStart=<%= @agent_dir %>/bin/agent.sh run
+ExecStop=<%= @agent_dir %>/bin/agent.sh stop
 
 [Install]
 WantedBy=multi-user.target
