@@ -77,10 +77,9 @@ class teamcity::agent::install {
     }
     
     exec { 'run-teamcity-manualy':
-				path		=> ["/usr/bin/","/usr/sbin/","/bin"],
-				user		=> '${agent_user}',
-				command		=> ${agent_dir}/bin/agent.sh run',
-			}
-    
+	path	=> ["/usr/bin/","/usr/sbin/","/bin"],
+	user	=> '${agent_user}',
+	command	=> ${agent_dir}/bin/agent.sh run',
+    }
   }
 }
