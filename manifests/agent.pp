@@ -61,15 +61,15 @@
 #
 # [*work_dir*]
 #   Path to the work directory.
-#   Defaults to `..\work`.
+#   Defaults to `../work`.
 #
 # [*temp_dir*]
 #   Path to the temp directory.
-#   Defaults to `C:/Windows/Temp`.
+#   Defaults to `../temp`.
 #
 # [*system_dir*]
 #   Path to the system directory.
-#   Defaults to `..\system`.
+#   Defaults to `../system`.exi
 #
 # [*teamcity_agent_mem_opts*]
 #   String for configuring additional java parameters for build agent
