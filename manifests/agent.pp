@@ -108,8 +108,8 @@ class teamcity::agent (
   $service_run_type        = $teamcity::params::service_run_type,
 
   $work_dir                = $teamcity::agent::work_dir,
-  $tempDir                 = $teamcity::agent::temp_dir,
-  $systemDir               = $teamcity::agent::system_dir,
+  $temp_dir                = $teamcity::agent::temp_dir,
+  $system_dir              = $teamcity::agent::system_dir,
 
   $teamcity_agent_mem_opts = $teamcity::params::teamcity_agent_mem_opts,
   $custom_properties       = $teamcity::params::custom_properties,

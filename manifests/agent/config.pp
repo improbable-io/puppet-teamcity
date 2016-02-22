@@ -17,8 +17,8 @@ class teamcity::agent::config {
   $launcher_wrapper_conf   = $teamcity::agent::launcher_wrapper_conf
   $teamcity_agent_mem_opts = $teamcity::agent::teamcity_agent_mem_opts
   $work_dir                = $teamcity::agent::work_dir
-  $tempDir                 = $teamcity::agent::temp_dir
-  $systemDir               = $teamcity::agent::system_dir
+  $temp_dir                 = $teamcity::agent::temp_dir
+  $system_dir               = $teamcity::agent::system_dir
 
   $required_properties = {
     'serverUrl' => $server_url,
