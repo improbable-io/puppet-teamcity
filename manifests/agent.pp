@@ -65,7 +65,7 @@
 #
 # [*temp_dir*]
 #   Path to the temp directory.
-#   Defaults to `..\temp`.
+#   Defaults to `C:/Windows/Temp`.
 #
 # [*system_dir*]
 #   Path to the system directory.

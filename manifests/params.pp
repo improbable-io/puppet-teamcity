@@ -13,7 +13,7 @@ class teamcity::params {
   $download_url            = "${server_url}/update/${archive_name}"
 
   $work_dir                = "../work"
-  $temp_dir                 = "../temp"
+  $temp_dir                 = "C:/Windows/Temp"
   $system_dir               = "../system"
 
   if $::kernel == 'windows' {

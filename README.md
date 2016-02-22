@@ -88,7 +88,7 @@ Defaults to `..\work`.
 
 ####`temp_dir`
 Temp path used by teamcity.
-Defaults to `..\temp`.
+Defaults to `C:/Windows/Temp`.
 
 ####`system_dir`
 System path used by teamcity.
