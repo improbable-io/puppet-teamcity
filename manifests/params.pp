@@ -12,6 +12,10 @@ class teamcity::params {
   $archive_name            = 'buildAgent.zip'
   $download_url            = "${server_url}/update/${archive_name}"
 
+  $work_dir                = "../work"
+  $tempDir                 = "../temp"
+  $systemDir               = "../system"
+
   if $::kernel == 'windows' {
     $agent_dir               = 'C:/buildAgent'
   }

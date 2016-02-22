@@ -82,6 +82,18 @@ Defaults to `${server_url}/update/${archive_name}`.
 Installation path, where build agent will reside.
 Defaults to `/opt/build-agent`.
 
+####`work_dir`
+Work path used by teamcity.
+Defaults to `..\work`.
+
+####`temp_dir`
+Temp path used by teamcity.
+Defaults to `..\temp`.
+
+####`system_dir`
+System path used by teamcity.
+Defaults to `..\system`.
+
 ####`service_ensure`
 Required service status. Defaults to `running`.
 

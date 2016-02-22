@@ -16,10 +16,16 @@ class teamcity::agent::config {
   $custom_properties       = $teamcity::agent::custom_properties
   $launcher_wrapper_conf   = $teamcity::agent::launcher_wrapper_conf
   $teamcity_agent_mem_opts = $teamcity::agent::teamcity_agent_mem_opts
+  $work_dir                = $teamcity::agent::work_dir
+  $tempDir                 = $teamcity::agent::temp_dir
+  $systemDir               = $teamcity::agent::system_dir
 
   $required_properties = {
     'serverUrl' => $server_url,
-    'name'      => $agent_name
+    'name'      => $agent_name,
+    'workDir'   => $work_dir,
+    'tempDir'   => $temp_dir,
+    'systemDir' => $system_dir,
   }
 
   # configure buildAgent.properties

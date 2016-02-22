@@ -59,6 +59,18 @@
 #   Service type
 #   On windows defaults to `service`, on Linux defaults to `init`.
 #
+# [*work_dir*]
+#   Path to the work directory.
+#   Defaults to `..\work`.
+#
+# [*temp_dir*]
+#   Path to the temp directory.
+#   Defaults to `..\temp`.
+#
+# [*system_dir*]
+#   Path to the system directory.
+#   Defaults to `..\system`.
+#
 # [*teamcity_agent_mem_opts*]
 #   String for configuring additional java parameters for build agent
 #
@@ -72,7 +84,7 @@
 # === Examples
 #
 # === Authors
-# grundic
+# grundic jordigg
 #
 # === Copyright
 # Copyright 2012-2014 Grigory Chernyshev
@@ -94,6 +106,11 @@ class teamcity::agent (
   $service_ensure          = $teamcity::params::service_ensure,
   $service_enable          = $teamcity::params::service_enable,
   $service_run_type        = $teamcity::params::service_run_type,
+
+  $work_dir                = $teamcity::agent::work_dir,
+  $tempDir                 = $teamcity::agent::temp_dir,
+  $systemDir               = $teamcity::agent::system_dir,
+
   $teamcity_agent_mem_opts = $teamcity::params::teamcity_agent_mem_opts,
   $custom_properties       = $teamcity::params::custom_properties,
   $launcher_wrapper_conf   = $teamcity::params::launcher_wrapper_conf,
