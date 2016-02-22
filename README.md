@@ -84,15 +84,15 @@ Defaults to `/opt/build-agent`.
 
 ####`work_dir`
 Work path used by teamcity.
-Defaults to `..\work`.
+Defaults to `../work`.
 
 ####`temp_dir`
 Temp path used by teamcity.
-Defaults to `C:/Windows/Temp`.
+Defaults to `../Temp`.
 
 ####`system_dir`
 System path used by teamcity.
-Defaults to `..\system`.
+Defaults to `../system`.
 
 ####`service_ensure`
 Required service status. Defaults to `running`.
