@@ -13,11 +13,14 @@ class teamcity::params {
   $download_url            = "${server_url}/update/${archive_name}"
 
   $work_dir                = "../work"
-  $temp_dir                = "../Temp"
+  $temp_dir                = "../temp"
   $system_dir              = "../system"
 
   if $::kernel == 'windows' {
     $agent_dir               = 'C:/buildAgent'
+  }
+  elsif $::kernel == 'darwin' {
+    $agent_dir               = '/Applications'
   }
   else {
     $agent_dir               = '/opt/build-agent'
@@ -26,6 +29,9 @@ class teamcity::params {
   $service_ensure          = 'running'
   $service_enable          = true
   if $::kernel == 'windows' {
+    $service_run_type        = 'service'
+  }
+  elsif $::kernel == 'darwin' {
     $service_run_type        = 'service'
   }
   else {

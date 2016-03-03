@@ -48,6 +48,15 @@ class teamcity::agent::config {
       mergemode => clobber,
     }
   }
+  elsif $::kernel == 'darwin' {
+    file { '/Library/LaunchAgents/jetbrains.teamcity.BuildAgent.plist':
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'wheel',
+      mode    => 0644,
+      content => '${agent_dir}/bin/jetbrains.teamcity.BuildAgent.plist',
+    }
+  }
   else {
     case $service_run_type {
       'init': {
