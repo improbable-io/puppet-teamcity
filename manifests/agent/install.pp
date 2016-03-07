@@ -43,6 +43,12 @@ class teamcity::agent::install {
       exec { 'download-agent-archive':
         command   => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}"
       }
+      exec { 'extract-agent-archive':
+        command   => "unzip ${::temp_dir}/${archive_name} -d ${agent_dir}",
+        creates   => "${agent_dir}/conf",
+        logoutput => 'on_failure',
+        require   => Exec['download-agent-archive']
+      }
     }else {
       wget::fetch { 'teamcity-buildagent':
         source      => $download_url,
@@ -50,13 +56,12 @@ class teamcity::agent::install {
         flags       => ['--no-proxy'],
         timeout     => 0,
       }
-    }
-
-    exec { 'extract-agent-archive':
-      command   => "unzip ${::temp_dir}/${archive_name} -d ${agent_dir}",
-      creates   => "${agent_dir}/conf",
-      logoutput => 'on_failure',
-      require   => Wget::Fetch['teamcity-buildagent']
+      exec { 'extract-agent-archive':
+        command   => "unzip ${::temp_dir}/${archive_name} -d ${agent_dir}",
+        creates   => "${agent_dir}/conf",
+        logoutput => 'on_failure',
+        require   => Wget::Fetch['teamcity-buildagent']
+      }
     }
 
     file {'agent-config':
