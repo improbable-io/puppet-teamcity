@@ -49,7 +49,7 @@ class teamcity::agent::config {
     }
   }
   elsif $::kernel == 'darwin' {
-    file { '/Library/LaunchAgents/jetbrains.teamcity.BuildAgent.plist':
+    file { '/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist':
       ensure  => 'present',
       owner   => 'root',
       group   => 'wheel',
