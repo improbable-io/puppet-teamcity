@@ -40,7 +40,7 @@ class teamcity::agent::install {
   }
   else {
     if $::kernel == 'darwin' {
-      exec { 'extract-agent-archive':
+      exec { 'download-agent-archive':
         command   => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}"
       }
     }else {
