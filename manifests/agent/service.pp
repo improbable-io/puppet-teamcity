@@ -51,7 +51,8 @@ class teamcity::agent::service {
       enable      => true,
       ensure      => running,
       provider    => "launchd",
-      require     => [ File["/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist"] ],
+      require     => File["/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist"],
+      subscribe   => File["/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist"],
     }
   }
   else {
