@@ -53,7 +53,6 @@ class teamcity::agent::install {
       file { '${agent_dir}/launcher/bin' :
         ensure     => directory,
         mode       => '731',
-        recurse    => true,
         subscribe  => Exec['extract-agent-archive'],
         require    => Exec['extract-agent-archive'],
         recurse    => true,
