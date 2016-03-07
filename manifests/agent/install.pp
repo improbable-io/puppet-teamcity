@@ -55,7 +55,8 @@ class teamcity::agent::install {
         mode       => '731',
         recurse    => true,
         subscribe  => Exec['extract-agent-archive'],
-        require    => Exec['extract-agent-archive']
+        require    => Exec['extract-agent-archive'],
+        recurse    => true,
       }
     }else {
       wget::fetch { 'teamcity-buildagent':
