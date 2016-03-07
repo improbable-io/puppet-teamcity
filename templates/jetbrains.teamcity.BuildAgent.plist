@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
-		<key>WorkingDirectory</key>
-		<string><%= @agent_dir %></string>
 		<key>UserName</key>
 		<string><%= @agent_user %></string>
 		<key>Debug</key>
@@ -16,7 +14,7 @@
 		<false/>
 		<key>ProgramArguments</key>
 		<array>
-			<string>launcher/bin/TeamCityAgentService-macosx-universal-32</string>
+			<string><%= @agent_dir %>/launcher/bin/TeamCityAgentService-macosx-universal-32</string>
 			<string>-c</string>
 			<string>../conf/wrapper.conf</string>
 		</array>
@@ -28,5 +26,7 @@
 		<string>logs/launchd.err.log</string>
 		<key>StandardOutPath</key>
 		<string>logs/launchd.out.log</string>
+		<key>WorkingDirectory</key>
+		<string><%= @agent_dir %></string>
 	</dict>
 </plist>
