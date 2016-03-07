@@ -50,6 +50,13 @@ class teamcity::agent::install {
         logoutput => 'on_failure',
         require   => Exec['download-agent-archive']
       }
+      exec { 'chmod-launcher-dir':
+        command     => "chmod 731 ${agent_dir}/launcher/bin/*",
+        subscribe   => Exec['extract-agent-archive'],
+        refreshonly => true,
+        logoutput   => 'on_failure',
+        require     => Exec['extract-agent-archive']
+      }
     }else {
       wget::fetch { 'teamcity-buildagent':
         source      => $download_url,
