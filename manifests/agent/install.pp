@@ -59,7 +59,7 @@ class teamcity::agent::install {
       }
       file { "${agent_dir}/logs" :
         ensure     => directory,
-        user       => $agent_user,
+        owner      => $agent_user,
         group      => $agent_group,
         subscribe  => Exec['extract-agent-archive'],
         require    => Exec['extract-agent-archive'],
