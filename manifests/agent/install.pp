@@ -57,6 +57,14 @@ class teamcity::agent::install {
         require    => Exec['extract-agent-archive'],
         recurse    => true,
       }
+      file { "${agent_dir}/logs" :
+        ensure     => directory,
+        user       => $agent_user,
+        group      => $agent_group,
+        subscribe  => Exec['extract-agent-archive'],
+        require    => Exec['extract-agent-archive'],
+        recurse    => true,
+      }
     }else {
       wget::fetch { 'teamcity-buildagent':
         source      => $download_url,
