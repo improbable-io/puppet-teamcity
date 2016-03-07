@@ -39,11 +39,17 @@ class teamcity::agent::install {
     }
   }
   else {
-    wget::fetch { 'teamcity-buildagent':
-      source      => $download_url,
-      destination => "${::temp_dir}/${archive_name}",
-      flags       => ['--no-proxy'],
-      timeout     => 0,
+    if $::kernel == 'darwin' {
+      exec { 'extract-agent-archive':
+        command   => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}"
+      }
+    }else {
+      wget::fetch { 'teamcity-buildagent':
+        source      => $download_url,
+        destination => "${::temp_dir}/${archive_name}",
+        flags       => ['--no-proxy'],
+        timeout     => 0,
+      }
     }
 
     exec { 'extract-agent-archive':
