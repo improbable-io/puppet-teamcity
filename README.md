@@ -80,7 +80,7 @@ Defaults to `${server_url}/update/${archive_name}`.
 
 ####`agent_dir`
 Installation path, where build agent will reside.
-Defaults to `/opt/build-agent`.
+Defaults to `/opt/build-agent` on Linux, `/Applications` on MacOSX and `C:/buildAgent` on Windows.
 
 ####`work_dir`
 Work path used by teamcity.
@@ -88,7 +88,7 @@ Defaults to `../work`.
 
 ####`temp_dir`
 Temp path used by teamcity.
-Defaults to `../Temp`.
+Defaults to `../temp`.
 
 ####`system_dir`
 System path used by teamcity.
@@ -108,7 +108,7 @@ standalone mode the shortcut is created in Startup forlder of specified
 user. This mode is required in some cases to overcome service's
 shortcomings (it could interact with desktop, so, it could not for
 example create direct3d device).
-Default on Windows is `service` and on Linux `init` or `systemd` depending
+Default on Windows and MacOSX is `service` and on Linux `init` or `systemd` depending
 on your OS version.
 
 ####`teamcity_agent_mem_opts`
