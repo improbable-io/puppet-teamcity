@@ -54,7 +54,7 @@ class teamcity::agent::config {
       owner   => 'root',
       group   => 'wheel',
       mode    => '0644',
-      source => '${agent_dir}/bin/jetbrains.teamcity.BuildAgent.plist',
+      content => template("${module_name}/jetbrains.teamcity.BuildAgent.plist"),
     }
   }
   else {
