@@ -53,7 +53,7 @@ class teamcity::agent::config {
       ensure  => 'present',
       owner   => 'root',
       group   => 'wheel',
-      mode    => 0644,
+      mode    => '0644',
       content => '${agent_dir}/bin/jetbrains.teamcity.BuildAgent.plist',
     }
   }
