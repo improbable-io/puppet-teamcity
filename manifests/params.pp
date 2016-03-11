@@ -21,6 +21,7 @@ class teamcity::params {
   elsif $::kernel == 'darwin' {
     $agent_dir               = '/Applications'
     $agent_group             = 'staff'
+    $service_run_type        = 'launchd'
   }
   else {
     $agent_dir               = '/opt/build-agent'
