@@ -21,7 +21,6 @@ class teamcity::params {
   elsif $::kernel == 'darwin' {
     $agent_dir               = '/Applications'
     $agent_group             = 'staff'
-    $service_run_type        = 'launchd'
   }
   else {
     $agent_dir               = '/opt/build-agent'
@@ -34,7 +33,7 @@ class teamcity::params {
     $service_run_type        = 'service'
   }
   elsif $::kernel == 'darwin' {
-    $service_run_type        = 'service'
+    $service_run_type        = 'launchd'
   }
   else {
     if ($::operatingsystem == "Debian" and versioncmp($::operatingsystemmajrelease, '7') >= 0) or ($::operatingsystem == "Ubuntu" and versioncmp($::operatingsystemmajrelease, '15.04') >= 0) {
