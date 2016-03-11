@@ -28,7 +28,7 @@ class teamcity::account {
 
       if $::kernel == 'darwin' {
         if $manage_agent_user_home == true {
-          file { '$_agent_user_home_real':
+          file { $_agent_user_home_real:
             ensure => directory,
             before => User[$agent_user],
           } 
