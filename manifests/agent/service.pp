@@ -49,6 +49,7 @@ class teamcity::agent::service {
   elsif $::kernel == 'darwin' {
     exec { 'first-run':
       command     => "sh ${agent_dir}/bin/mac.launchd.sh load",
+      user        => $agent_user,
       refreshonly => true,
       before      => Service['jetbrains.teamcity.BuildAgent'],
     }
