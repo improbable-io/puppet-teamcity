@@ -50,12 +50,9 @@ class teamcity::agent::install {
         logoutput => 'on_failure',
         require   => Exec['download-agent-archive']
       }
-      file { "${agent_dir}/launcher/bin" :
-        ensure     => directory,
-        mode       => '731',
-        subscribe  => Exec['extract-agent-archive'],
-        require    => Exec['extract-agent-archive'],
-        recurse    => true,
+      exec { 'fix-launcher-permissions':
+        command   => "chmod +x ${agent_dir}/launcher/bin/*",
+        require   => Exec['extract-agent-archive']
       }
       file { "${agent_dir}/logs" :
         ensure     => directory,
