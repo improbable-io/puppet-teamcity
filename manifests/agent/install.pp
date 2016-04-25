@@ -41,8 +41,8 @@ class teamcity::agent::install {
   else {
     if $::kernel == 'darwin' {
       exec { 'download-agent-archive':
-        command   => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}",
-        creates   => "${::temp_dir}/${archive_name}",
+        command => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}",
+        creates => "${::temp_dir}/${archive_name}",
       }
       exec { 'extract-agent-archive':
         command   => "unzip ${::temp_dir}/${archive_name} -d ${agent_dir}",
@@ -51,16 +51,16 @@ class teamcity::agent::install {
         require   => Exec['download-agent-archive']
       }
       exec { 'fix-launcher-permissions':
-        command   => "chmod +x ${agent_dir}/launcher/bin/*",
-        require   => Exec['extract-agent-archive']
+        command => "chmod +x ${agent_dir}/launcher/bin/*",
+        require => Exec['extract-agent-archive']
       }
       file { "${agent_dir}/logs" :
-        ensure     => directory,
-        owner      => $agent_user,
-        group      => $agent_group,
-        subscribe  => Exec['extract-agent-archive'],
-        require    => Exec['extract-agent-archive'],
-        recurse    => true,
+        ensure    => directory,
+        owner     => $agent_user,
+        group     => $agent_group,
+        subscribe => Exec['extract-agent-archive'],
+        require   => Exec['extract-agent-archive'],
+        recurse   => true,
       }
     }else {
       wget::fetch { 'teamcity-buildagent':
