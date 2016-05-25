@@ -46,6 +46,21 @@ class teamcity::agent::service {
       fail('$service_run_type must be either service or standalone')
     }
   }
+  elsif $::kernel == 'darwin' {
+    exec { 'first-run':
+      command     => "sh ${agent_dir}/bin/mac.launchd.sh load",
+      user        => $agent_user,
+      refreshonly => true,
+      before      => Service['jetbrains.teamcity.BuildAgent'],
+    }
+    service { 'jetbrains.teamcity.BuildAgent':
+      enable      => $service_enable,
+      ensure      => $service_ensure,
+      provider    => $service_run_type,
+      require     => File["/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist"],
+      subscribe   => File["/Library/LaunchDaemons/jetbrains.teamcity.BuildAgent.plist"],
+    }
+  }
   else {
     if $service_run_type == 'systemd' {
       service { 'build-agent':

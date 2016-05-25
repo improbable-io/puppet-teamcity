@@ -26,14 +26,32 @@ class teamcity::account {
         default => $agent_user_home,
       }
 
-      user { $agent_user:
-        ensure     => 'present',
-        home       => $_agent_user_home_real,
-        managehome => $manage_agent_user_home,
-        gid        => $agent_group,
-        shell      => '/bin/sh',
-        require    => $group_require,
+      if $::kernel == 'darwin' {
+        if $manage_agent_user_home == true {
+          file { $_agent_user_home_real:
+            ensure => directory,
+            before => User[$agent_user],
+          } 
+        }
+        user { $agent_user:
+          ensure     => 'present',
+          home       => $_agent_user_home_real,
+          managehome => false,
+          gid        => $agent_group,
+          shell      => '/bin/bash',
+          require    => $group_require,
+        }
+      } else {
+        user { $agent_user:
+          ensure     => 'present',
+          home       => $_agent_user_home_real,
+          managehome => $manage_agent_user_home,
+          gid        => $agent_group,
+          shell      => '/bin/sh',
+          require    => $group_require,
+        }
       }
+
     }
   }
 }
