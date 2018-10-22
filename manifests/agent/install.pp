@@ -43,16 +43,19 @@ class teamcity::agent::install {
       exec { 'download-agent-archive':
         command => "curl -L -o ${::temp_dir}/${archive_name} ${download_url}",
         creates => "${::temp_dir}/${archive_name}",
+        notify  => ['extract-agent-archive']
       }
       exec { 'extract-agent-archive':
         command   => "unzip ${::temp_dir}/${archive_name} -d ${agent_dir}",
         creates   => "${agent_dir}/conf",
         logoutput => 'on_failure',
-        require   => Exec['download-agent-archive']
+        require   => Exec['download-agent-archive'],
+        notify    => Exec['fix-launcher-permissions']
       }
       exec { 'fix-launcher-permissions':
-        command => "chmod +x ${agent_dir}/launcher/bin/*",
-        require => Exec['extract-agent-archive']
+        command     => "chmod +x ${agent_dir}/launcher/bin/*",
+        require     => Exec['extract-agent-archive'],
+        refreshonly => true
       }
       file { "${agent_dir}/logs" :
         ensure    => directory,
@@ -99,6 +102,6 @@ class teamcity::agent::install {
       mode    => '0755',
       require => Exec['extract-agent-archive']
     }
-    
+
   }
 }
